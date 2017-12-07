@@ -1,0 +1,76 @@
+//
+//  main.c
+//  Leap and Next week
+//
+//  Created by Peter Tran on 2/11/16.
+//  Copyright (c) 2016 Peter Tran. All rights reserved.
+//
+
+#include <stdio.h>
+#include <stdbool.h>
+struct date
+{
+    int month;
+    int day;        //Stores current date
+    int year;
+    
+};
+struct date today;
+struct date nextWeek;
+bool leapYear(struct date d)
+{
+    bool isLeapYear;
+    if ((d.year%4==0)||(d.year%400==0))
+        isLeapYear=true;
+    else
+        isLeapYear=false;
+    return isLeapYear;
+}
+int numberOfDays(struct date d)
+{
+    int days;
+    bool leapYear (struct date d);
+    const int months [13] = {0,31,29,31,30,31,30,31,31,30,31,31};
+    if (leapYear(d)==true&&d.month==2)
+        days=29;
+    else
+        days=months[d.month];
+    return days;
+}
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    struct date today, nextWeek;
+    int numbersOfDays(struct date d);
+    printf("Hello, World!\n");
+    printf("Please enter the date in MM DD YY: \n");
+    scanf("%i %i %i" ,&today.month,&today.day,&today.year); // Ask and scans date
+
+
+
+    if (today.day+7>numbersOfDays(today)) //Checks if it's over the month therefore changing it
+    {
+        
+        nextWeek.day= ((today.day+7) - numbersOfDays(today));
+        nextWeek.month=today.month+1; //Changes month
+        nextWeek.year=today.year;
+        
+        if (nextWeek.month==13) //Checks for new year
+        {
+            nextWeek.month=1;
+            nextWeek.year++;
+            nextWeek.day= ((nextWeek.day) - 31);
+        }
+    }
+    
+    
+    else  //Default if all works
+    {
+        nextWeek.day=today.day+7;
+        nextWeek.month=today.month;
+        nextWeek.year=today.year;
+        
+    }
+    
+    printf("Next week date is %i %i %i",nextWeek.month,nextWeek.day,nextWeek.year); //Prints date
+    return 0;
+}
