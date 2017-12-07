@@ -1,0 +1,87 @@
+import UIKit
+
+class fishes2: UIViewController {
+
+
+    @IBAction func size(_ sender: UISegmentedControl) {
+        // Creates Segment Control
+        
+        let index:Int = sender.selectedSegmentIndex
+        
+        let title:String = sender.titleForSegment(at: index)!
+        
+        // Checks for value of title
+        
+        let gallons:Double? = Double(newText.text!)
+        
+        // Makes values of newText to a double
+        
+        if newText.text!.isEmpty == true || gallons == nil {
+            newText.placeholder="Input a valid number"
+            newText.text = ""
+        }
+
+        else
+        {
+        if title == "Full Grown"
+            
+        // Checks if value is "Full Grown"
+            
+        {
+        // If this value is true, then converts gallons to inches of fish possible
+
+        inchesOfFishes.text = "\(gallons!) inches of fishes in your tank"
+            
+        }
+        else
+        {
+            
+            let gallons:Double? = Double(newText.text!) //Makes newText a double
+            
+            let inchesgrowth:Double? = (gallons!)*(0.333) // For every gallon you can have .33 inches
+            
+            inchesOfFishes.text = "\(inchesgrowth!) inches of fishes in your tank" //Tells user values
+            
+        }
+        
+    }
+    
+
+    }
+    @IBOutlet weak var inchesOfFishes: UITextField! //Textg Field for gallons to fishes
+    
+    
+    @IBOutlet weak var newText: UITextField!
+
+    @IBOutlet weak var litersToGallons: UITextField! //User enters to liters into this text field
+    
+    @IBAction func lToG(_ sender: AnyObject) { // Button once user enter values
+    let string = String(litersToGallons.text!) // Converts string to double
+
+        
+    let liters:Double? = Double(litersToGallons.text!)
+            // Convets LitersToGallons (string) to liters (double)
+        if litersToGallons.text!.isEmpty == true || liters == nil {
+            litersToGallons.placeholder="Input a valid number"
+            litersToGallons.text = ""
+        }
+        else
+        {
+
+        let test:Double? = liters!*0.26417
+            // Calucation from gallons to liters
+        litersToGallons.text = "\(test!) gallons from L to G"
+            //prints results once calucations are finished
+        }
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
